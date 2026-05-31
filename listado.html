@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
-    <nav>
-        <a href="index.html">Inicio</a><br>
-    </nav>
+    <div class="contenedor">
+
+        <header>
+            <h1>Listado de juegos</h1>
+        </header>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+        </nav>
+
+        <button id="btn-todos">Mostrar todos</button>
+        <button id="btn-shooter">Solo shooters</button>
+
+        <div id="listado"></div>
+
+    </div>
+
+    <script>
+        const juegos = [
+            { nombre: "Minecraft", categoria: "survival" },
+            { nombre: "Fortnite", categoria: "shooter" },
+            { nombre: "Valorant", categoria: "shooter" },
+            { nombre: "Rust", categoria: "survival" },
+            { nombre: "FIFA", categoria: "deportes" },
+            { nombre: "Counter Strike", categoria: "shooter" },
+        ];
+
+        function mostrarJuegos(lista) {
+            const listado = document.getElementById("listado");
+            listado.innerHTML = lista.map((juego) => `
+        <div class="tarjeta">
+            <h3>${juego.nombre}</h3>
+            <p>${juego.categoria}</p>
+        </div>
+    `).join("");
+        }
+
+        mostrarJuegos(juegos);
+
+        document.getElementById("btn-todos").addEventListener("click", function () {
+            mostrarJuegos(juegos);
+        });
+
+        document.getElementById("btn-shooter").addEventListener("click", function () {
+            const shooters = juegos.filter((juego) => juego.categoria === "shooter");
+            mostrarJuegos(shooters);
+        });
+    </script>
+
 </body>
+
 </html>
