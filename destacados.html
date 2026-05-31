@@ -1,13 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destacado</title>
+    <title>Destacados</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
-    <nav>
-        <a href="index.html">Inicio</a><br>
-    </nav>
+    <div class="contenedor">
+
+        <header>
+            <h1>Juegos destacados</h1>
+        </header>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+        </nav>
+
+        <p id="contador">Juegos seleccionados: 0</p>
+
+        <div class="tarjetas">
+            <div class="tarjeta">
+                <h3>Minecraft</h3>
+                <p>Juego de construcción y supervivencia</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Counter Strike</h3>
+                <p>Shooter táctico por equipos</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Valorant</h3>
+                <p>Shooter táctico con habilidades</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Rust</h3>
+                <p>Juego de supervivencia multijugador</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const tarjetas = document.querySelectorAll(".tarjeta");
+        const contador = document.getElementById("contador");
+
+        tarjetas.forEach(function (tarjeta) {
+            tarjeta.addEventListener("click", function () {
+                tarjeta.classList.toggle("seleccionada");
+
+                const seleccionadas = document.querySelectorAll(".tarjeta.seleccionada");
+                contador.innerHTML = "Juegos seleccionados: " + seleccionadas.length;
+            });
+        });
+    </script>
+
 </body>
+
 </html>
