@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
-    <nav>
-        <a href="destacados.html">Destacados</a><br>
-        <a href="listado.html">Listados</a>
-    </nav>
 
-    <h1>Pagina principal</h1>
+<body>
+    <div class="contenedor">
+        <header>
+            <h1>Pagina principal</h1>
+        </header>
+
+        <nav>
+            <a href="destacados.html">Destacados</a><br>
+            <a href="listado.html">Listados</a>
+        </nav>
+
+        <main>
+            <ul id="lista"></ul>
+            <button id="boton">Mostrar cantidad</button>
+            <p id="resultado"></p>
+        </main>
+    </div>
+
+    <script>
+        const lista = document.getElementById("lista");
+        const listado = ["Tostadas", "Yogurt", "Cafe", "Medialunas", "Mate cocido"];
+
+        //Cargar listado empleando map
+        lista.innerHTML = listado.map((item) => `<li>${item}</li>`).join("");
+
+        //Boton para mostrar la cantidad de elementos
+        const boton = document.getElementById("boton");
+        boton.addEventListener("click", function () {
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = "Hay " + listado.length + " meriendas";
+        });
+
+    </script>
 
 </body>
+
 </html>
